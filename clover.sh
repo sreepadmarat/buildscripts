@@ -2,8 +2,7 @@
 
 # --- 1. Initialize Clover Source (Android 16 QPR1) ---
 repo init -u https://github.com/The-Clover-Project/manifest.git -b 16-qpr1 --git-lfs
-/opt/crave/resync.sh
-
+repo sync -c --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
 # --- 2. Clone Device Trees ---
 # Using depth=1 to keep the workspace clean and fast
 git clone https://github.com/sreepadmarat/android_device_oneplus_larry.git -b clover device/oneplus/larry --depth=1
