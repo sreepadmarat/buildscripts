@@ -22,7 +22,7 @@ git clone https://github.com/sreepadmarat/android_hardware_oplus hardware/oplus 
 git clone https://github.com/LineageOS/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375 -b lineage-23.2 --depth 1
 git clone https://github.com/TheMuppets/proprietary_vendor_oneplus_larry vendor/oneplus/larry -b lineage-23.2 --depth 1
 git clone https://github.com/TheMuppets/proprietary_vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common -b lineage-23.2 --depth 1
-svn export https://github.com/sreepadmarat/buildscripts/trunk/keys device/oneplus/larry/keys
+svn export https://github.com/sreepadmarat/buildscripts/main/keys device/oneplus/larry/keys
 
 repo forall -c 'git lfs pull'
 
