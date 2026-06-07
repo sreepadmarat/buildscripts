@@ -23,7 +23,7 @@ git clone -b pixel https://github.com/sreepadmarat/device_oneplus_sm6375-common 
 git clone -b pixel https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
 git clone -b lineage-22.0 https://gitlab.com/larry-rom-archive/vendor-oplus-camera vendor/oplus/camera --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/dolby --depth=1
-git clone -b lineage-23.2 https://github.com/Larry-ROM-Archive/packages_apps_GameBar /packages/apps/GameBar --depth=1
+git clone -b lineage-23.2 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar --depth=1
 git clone -b 16.2 https://gitlab.com/larry-rom-archive/kernel_oneplus_sm6375.git kernel/oneplus/sm6375 --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_larry vendor/oneplus/larry --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common --depth=1
