@@ -40,6 +40,7 @@ repo forall -c 'git lfs pull'
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
+ln -s lineage-priv vendor/voltage-priv
 
 # Set up build environment
 source build/envsetup.sh
