@@ -37,6 +37,7 @@ echo "============ Repo Sync Successfull ==============="
 repo forall -c 'git lfs pull'
 
 #Signing Keys
+mkdir -p vendor/lineage-priv
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
