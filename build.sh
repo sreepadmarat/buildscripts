@@ -28,13 +28,22 @@ git clone -b 16.2 https://gitlab.com/larry-rom-archive/kernel_oneplus_sm6375.git
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_larry vendor/oneplus/larry --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common --depth=1
 
-# Download lfs Artifacts
-repo forall -c 'git lfs pull'
-
 # Sync the repositories
 /opt/crave/resync.sh
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 echo "============================"
+
+# Download lfs Artifacts
+repo forall -c 'git lfs pull'
+
+#Signing Keys
+git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
+mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
+rm -rf vendor/lineage-priv/buildscripts_tmp
+
+# Set up build environment
+source build/envsetup.sh
+echo "====== Envsetup Done ======="
 
 # Export
 export TZ=Asia/Kolkata
@@ -43,10 +52,6 @@ export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
 export WITH_GMS=true
 echo "======= Export Done ======"
-
-# Set up build environment
-source b*/env*
-echo "====== Envsetup Done ======="
 
 # Lunch
 lunch custom_larry-bp4a-user
