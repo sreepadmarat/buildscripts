@@ -30,8 +30,8 @@ git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-com
 
 # Sync the repositories
 /opt/crave/resync.sh
-repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-echo "============================"
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
+echo "============ Repo Sync Successfull ==============="
 
 # Download lfs Artifacts
 repo forall -c 'git lfs pull'
@@ -56,11 +56,11 @@ echo "======= Export Done ======"
 
 # Lunch
 lunch custom_larry-bp4a-user
-echo "============="
+echo "====== Lunch Set ======="
 
 # Make cleaninstall
 make installclean
-echo "============="
+echo "====== Cleaning Complete ======="
 
 # Build rom
 m pixelos
