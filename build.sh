@@ -9,7 +9,6 @@ rm -rf vendor/oneplus/sm6375-common
 rm -rf vendor/oplus/camera
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
-rm -rf .repo
 
 # Rom source repo
 repo init -u https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs --depth=1
