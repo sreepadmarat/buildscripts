@@ -19,7 +19,7 @@ echo "=================="
 
 # Clone Trees 
 git clone -b pixel https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry --depth=1
-git clone -b pixel https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
+git clone -b lineage-23.2 https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
 git clone -b pixel https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
 git clone -b lineage-22.0 https://gitlab.com/larry-rom-archive/vendor-oplus-camera vendor/oplus/camera --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/dolby --depth=1
