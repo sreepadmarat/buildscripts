@@ -33,6 +33,10 @@ git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-com
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 echo "============ Repo Sync Successfull ==============="
 
+# Set up build environment
+source build/envsetup.sh
+echo "====== Envsetup Done ======="
+
 # Download lfs Artifacts
 repo forall -c 'git lfs pull'
 
@@ -42,10 +46,6 @@ git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/line
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
 ln -s lineage-priv vendor/voltage-priv
-
-# Set up build environment
-source build/envsetup.sh
-echo "====== Envsetup Done ======="
 
 # Export
 export TZ=Asia/Kolkata
