@@ -53,10 +53,11 @@ export BUILD_USERNAME=sreepadmarat
 export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
 export WITH_GMS=true
+export TARGET_2ND_ARCH_VARIANT=armv8-a
 echo "======= Export Done ======"
 
 # Lunch
-lunch custom_larry-bp4a-user
+lunch larry-user
 echo "====== Lunch Set ======="
 
 # Make cleaninstall
