@@ -60,7 +60,7 @@ export TARGET_2ND_ARCH_VARIANT=armv8-a
 echo "======= Export Done ======"
 
 # Lunch 
-lunch custom_larry-bp4a-user
+breakfast larry user
 echo "====== Lunch Set ======="
 
 # Clean install and build
