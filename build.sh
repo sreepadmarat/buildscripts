@@ -21,6 +21,7 @@ echo "=================="
 
 # 3. Sync the base platform repositories FIRST
 /opt/crave/resync.sh
+# For Safety
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 echo "============ Base Repo Sync Successfull ==============="
 
@@ -28,13 +29,18 @@ echo "============ Base Repo Sync Successfull ==============="
 git clone -b pixel https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry --depth=1
 git clone -b lineage-23.2 https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
 git clone -b pixel https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
-git clone -b lineage-22.0 https://gitlab.com/larry-rom-archive/vendor-oplus-camera vendor/oplus/camera --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/dolby --depth=1
-git clone -b lineage-23.2 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar --depth=1
-git clone -b 16.2 https://gitlab.com/larry-rom-archive/kernel_oneplus_sm6375.git kernel/oneplus/sm6375 --depth=1
+git clone -b 16.0 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar --depth=1
+git clone -b 16.0 https://github.com/Larry-ROM-Archive/kernel_oneplus_sm6375 kernel/oneplus/sm6375 --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_larry vendor/oneplus/larry --depth=1
 git clone -b 16.2 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common --depth=1
 echo "============ Custom Trees Cloned Successfully ==============="
+
+# Patches
+sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.2/default/Android.bp
+sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.3/default/Android.bp
+rm packages/apps/DolbyAtmos/Android.mk
+echo "" > packages/apps/DolbyAtmos/Android.bp
 
 # 5. Set up build environment (gettop handles patches cleanly now)
 source build/envsetup.sh
@@ -56,15 +62,10 @@ export BUILD_USERNAME=sreepadmarat
 export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
 export WITH_GMS=true
-export TARGET_2ND_ARCH_VARIANT=armv8-a
 echo "======= Export Done ======"
 
 # Lunch 
-breakfast larry user
+lunch custom_larry-bp4a-user 
 echo "====== Lunch Set ======="
-
-# Clean install and build
-make installclean
-echo "====== Cleaning Complete ======="
 
 m pixelos
