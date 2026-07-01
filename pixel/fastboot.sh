@@ -64,4 +64,6 @@ echo "======= Export Done ======"
 lunch custom_larry-bp4a-user 
 echo "====== Lunch Set ======="
 
+m installclean
+
 m updatepackage
