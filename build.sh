@@ -7,11 +7,9 @@ rm -rf hardware/oplus
 rm -rf kernel/oneplus/sm6375
 rm -rf vendor/oneplus/larry
 rm -rf vendor/oneplus/sm6375-common
-rm -rf vendor/oplus/camera
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
 rm -rf vendor/lineage-priv  
-rm -rf vendor/voltage-priv
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs --depth=1
@@ -54,7 +52,6 @@ mkdir -p vendor/lineage-priv
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
-ln -s lineage-priv vendor/voltage-priv
 
 # Export environmental variables
 export TZ=Asia/Kolkata
