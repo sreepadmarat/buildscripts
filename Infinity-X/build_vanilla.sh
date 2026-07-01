@@ -65,5 +65,6 @@ echo "======= Export Done ======"
 # Lunch 
 lunch infinity_larry-bp4a-user 
 echo "====== Lunch Set ======="
+m installclean
 
 m bacon
