@@ -65,5 +65,7 @@ lunch custom_larry-bp4a-user
 echo "====== Lunch Set ======="
 
 m installclean
-
 m pixelos
+mkdir -p first && cp out/target/product/larry/PixelOS*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop first/
+m installclean
+m updatepackage
