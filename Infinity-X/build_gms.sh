@@ -11,6 +11,7 @@ rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
 rm -rf vendor/infinity-priv
 rm -rf vendor/lineage-priv
+rm -rf first
 
 # 2. Rom source repo initialization
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefaultecho "=================="
@@ -66,5 +67,7 @@ echo "======= Export Done ======"
 lunch infinity_larry-bp4a-user 
 echo "====== Lunch Set ======="
 m installclean
-
 m bacon
+mkdir -p first && cp out/target/product/larry/Project_Infinity-X*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop first/
+m installclean
+m updatepackage
