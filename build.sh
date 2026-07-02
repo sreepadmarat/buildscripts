@@ -33,7 +33,7 @@ git clone -b 16.2 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/d
 git clone -b 16.0 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar --depth=1
 git clone -b 16.1 https://github.com/diathequeen/proprietary_oneplus_oos_camera vendor/oplus/camera --depth=1
 git clone -b 16.0-hybrid https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375 --depth=1
-git clone -b lineage-23.2 https://github.com/TheMuppets/proprietary_vendor_oneplus_larry.git vendor/oneplus/larry --depth=1
+git clone -b lineage-23.2 https://github.com/sreepadmarat/proprietary_vendor_oneplus_larry vendor/oneplus/larry --depth=1
 git clone -b lineage-23.2 https://github.com/TheMuppets/proprietary_vendor_oneplus_sm6375-common.git vendor/oneplus/sm6375-common --depth=1
 echo "============ Custom Trees Cloned Successfully ==============="
 
