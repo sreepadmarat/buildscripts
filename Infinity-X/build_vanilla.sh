@@ -64,8 +64,9 @@ export WITH_GAPPS=false
 echo "======= Export Done ======"
 
 # Lunch 
-lunch infinity_larry-bp4a-user 
+lunch infinity_larry-bp4a-userdebug
 echo "====== Lunch Set ======="
+
 m installclean
 m bacon
 mkdir -p first && cp out/target/product/larry/Project_Infinity-X*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop first/
