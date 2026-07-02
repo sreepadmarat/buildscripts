@@ -10,7 +10,6 @@ rm -rf vendor/oneplus/sm6375-common
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
 rm -rf vendor/lineage-priv  
-rm -rf vendor/oplus/camera
 rm -rf first
 
 # 2. Rom source repo initialization
