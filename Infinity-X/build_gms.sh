@@ -64,7 +64,7 @@ export WITH_GAPPS=true
 echo "======= Export Done ======"
 
 # Lunch 
-lunch infinity_larry-bp4a-user 
+lunch infinity_larry-bp4a-userdebug 
 echo "====== Lunch Set ======="
 m installclean
 m bacon
