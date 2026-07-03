@@ -40,6 +40,7 @@ sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-
 sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.3/default/Android.bp
 rm packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
+sed -i '/"Calendar",/d' build/target/product/gsi/Android.bp
 
 #OTA
 rm -rf packages/apps/Updater
@@ -72,5 +73,6 @@ lunch infinity_larry-userdebug
 echo "====== Lunch Set ======="
 
 m installclean
+rm -rf out/soong
 m bacon
 m updatepackage
