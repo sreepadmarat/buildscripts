@@ -14,7 +14,8 @@ rm -rf vendor/lineage-priv
 rm -rf first
 
 # 2. Rom source repo initialization
-repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefaultecho "=================="
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault
+echo "=================="
 echo "Repo init success"
 echo "=================="
 
@@ -51,9 +52,9 @@ repo forall -c 'git lfs pull'
 # 6. Clean Signing Keys & absolute path Symlinking
 mkdir -p vendor/infinity-priv
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/infinity-priv/buildscripts_tmp
-mv vendor/lineage-priv/buildscripts_tmp/keys vendor/infinity-priv/keys
+mv vendor/infinity-priv/buildscripts_tmp/keys vendor/infinity-priv/keys
 rm -rf vendor/infinity-priv/buildscripts_tmp
-ln -s infinity-priv vendor/lineage-priv
+sed -i 's|vendor/lineage-priv/keys/|vendor/infinity-priv/keys/|g' vendor/infinity-priv/keys/keys.mk
 
 # Export environmental variables
 export TZ=Asia/Kolkata
@@ -70,5 +71,4 @@ echo "====== Lunch Set ======="
 m installclean
 m bacon
 mkdir -p first && cp out/target/product/larry/Project_Infinity-X*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop first/
-m installclean
 m updatepackage
