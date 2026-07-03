@@ -10,6 +10,7 @@ rm -rf vendor/oneplus/sm6375-common
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
 rm -rf vendor/infinity-priv
+rm -rf packages/apps/Updater
 
 # 2. Rom source repo initialization
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault
@@ -39,6 +40,10 @@ sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-
 sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.3/default/Android.bp
 rm packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
+
+#OTA
+rm -rf packages/apps/Updater
+git clone -b GMS https://github.com/sreepadmarat/packages_apps_Updater packages/apps/Updater --depth=1 
 
 # 5. Set up build environment (gettop handles patches cleanly now)
 . build/envsetup.sh
