@@ -73,6 +73,5 @@ lunch infinity_larry-userdebug
 echo "====== Lunch Set ======="
 
 m installclean
-rm -rf out/soong
 m bacon
 m updatepackage
