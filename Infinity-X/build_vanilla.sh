@@ -65,7 +65,7 @@ export TZ=Asia/Kolkata
 export BUILD_USERNAME=sreepadmarat
 export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
-export WITH_GAPPS=false
+export WITH_GAPPS=true
 echo "======= Export Done ======"
 
 # Lunch 
