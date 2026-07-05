@@ -66,4 +66,12 @@ echo "====== Lunch Set ======="
 
 m installclean
 m pixelos
+echo "=== Copying Build Output ==="
+mkdir -p pixelos
+cp out/target/product/larry/PixelOS_larry*.zip \
+   out/target/product/larry/boot.img \
+   out/target/product/larry/vendor_boot.img \
+   out/target/product/larry/dtbo.img \
+   out/target/product/larry/system/build.prop pixelos/
 m updatepackage
+cp out/target/product/larry/custom_larry-img.zip pixelos/
