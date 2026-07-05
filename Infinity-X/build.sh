@@ -10,6 +10,8 @@ rm -rf vendor/oneplus/sm6375-common
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
 rm -rf vendor/infinity-priv
+rm -rf gapps
+rm -rf vanilla
 
 # 2. Rom source repo initialization
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest -b 16 -g default,-mips,-darwin,-notdefault
