@@ -10,7 +10,6 @@ rm -rf device/oneplus/larry \
        vendor/oneplus/sm6375-common \
        hardware/dolby \
        packages/apps/GameBar \
-       packages/apps/Updater \
        vendor/infinity-priv \
        gapps \
        vanilla
@@ -27,6 +26,8 @@ echo "=== Synchronizing Base Repositories ==="
 /opt/crave/resync.sh
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 echo "Base Repo Sync Successful"
+
+rm -rf packages/apps/Updater
 
 # 4. Inject custom device trees
 echo "=== Cloning Custom Device Trees ==="
