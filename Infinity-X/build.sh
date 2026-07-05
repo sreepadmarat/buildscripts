@@ -73,17 +73,29 @@ echo "======= Export Done ======"
 lunch infinity_larry-userdebug
 echo "====== Lunch Set ======="
 
-m installclean
-m bacon
-m updatepackage
-mkdir -p vanilla && cp out/target/product/larry/Project_Infinity-X*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop vanilla/
+m installclean && \
+m bacon && \
+mkdir -p vanilla && \
+cp out/target/product/larry/Project_Infinity-X*.zip \
+   out/target/product/larry/boot.img \
+   out/target/product/larry/vendor_boot.img \
+   out/target/product/larry/dtbo.img \
+   out/target/product/larry/system/build.prop vanilla/ && \
+m updatepackage && \
+cp out/target/product/larry/infinity_larry-img.zip vanilla/
 
 export WITH_GAPPS=true
 #OTA
 rm -rf packages/apps/Updater
 git clone -b GMS https://github.com/sreepadmarat/packages_apps_Updater packages/apps/Updater --depth=1 
 
-m installclean
-m bacon
-m updatepackage
-mkdir -p gapps && cp out/target/product/larry/Project_Infinity-X*.zip out/target/product/larry/boot.img out/target/product/larry/vendor_boot.img out/target/product/larry/dtbo.img out/target/product/larry/system/build.prop gapps/
+m installclean && \
+m bacon && \
+mkdir -p gapps && \
+cp out/target/product/larry/Project_Infinity-X*.zip \
+   out/target/product/larry/boot.img \
+   out/target/product/larry/vendor_boot.img \
+   out/target/product/larry/dtbo.img \
+   out/target/product/larry/system/build.prop gapps/ && \
+m updatepackage && \
+cp out/target/product/larry/infinity_larry-img.zip gapps/
