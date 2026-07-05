@@ -40,12 +40,12 @@ sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-
 rm packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
 
+# Download lfs Artifacts
+repo forall -c 'git lfs pull'
+
 # 5. Set up build environment (gettop handles patches cleanly now)
 source build/envsetup.sh
 echo "====== Envsetup Done ======="
-
-# Download lfs Artifacts
-repo forall -c 'git lfs pull'
 
 # 6. Clean Signing Keys & absolute path Symlinking
 mkdir -p vendor/lineage-priv
