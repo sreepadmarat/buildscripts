@@ -57,13 +57,13 @@ rm -f packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
 sed -i '/"Calendar",/d' build/target/product/gsi/Android.bp
 
-# 6. Set up build environment
-echo "=== Loading Environment Setup ==="
-. build/envsetup.sh
-
 # Download Git LFS Artifacts for all tracked repos safely
 echo "=== Fetching Git LFS Artifacts ==="
 repo forall -c 'git lfs pull || true'
+
+# 6. Set up build environment
+echo "=== Loading Environment Setup ==="
+. build/envsetup.sh
 
 # 7. Clean Signing Keys Setup
 echo "=== Setting Up Build Keys ==="
