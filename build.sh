@@ -9,7 +9,8 @@ rm -rf vendor/oneplus/larry
 rm -rf vendor/oneplus/sm6375-common
 rm -rf hardware/dolby
 rm -rf packages/apps/GameBar
-rm -rf vendor/lineage-priv  
+rm -rf vendor/lineage-priv
+rm -rf pixelos
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs --depth=1
