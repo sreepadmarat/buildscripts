@@ -40,7 +40,7 @@ git clone -b 16.0 --depth=1 https://github.com/Larry-ROM-Archive/packages_apps_G
 git clone -b axion --depth=1 https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375
 git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/proprietary_vendor_oneplus_larry vendor/oneplus/larry
 git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/proprietary_vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common
-git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/android_packages_apps_Updater packages/apps/Updater
+git clone -b gapps --depth=1 https://github.com/sreepadmarat/android_packages_apps_Updater packages/apps/Updater
 echo "Custom Trees Cloned Successfully"
 
 # 5. Apply Patches Safely
@@ -79,28 +79,9 @@ export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
 export TARGET_INCLUDES_LOS_PREBUILTS=true
 
-# 8. BUILD VARIANT 1: Vanilla (No GApps)
-echo "=== Starting Vanilla Build ==="
-
-axion larry userdebug va
-ax -br
-
-echo "=== Copying Vanilla Build Output ==="
-mkdir -p vanilla
-cp out/target/product/larry/axion*.zip \
-   out/target/product/larry/boot.img \
-   out/target/product/larry/vendor_boot.img \
-   out/target/product/larry/dtbo.img \
-   out/target/product/larry/system/build.prop vanilla/
-
-# 9. BUILD VARIANT 2: GApps (With GMS)
+# 9. BUILD VARIANT 1: GApps (With GMS)
 echo "=== Preparing GApps Build ==="
 
-# Swap OTA updater safely
-rm -rf packages/apps/Updater
-git clone -b gapps --depth=1 https://github.com/sreepadmarat/android_packages_apps_Updater packages/apps/Updater
-
-# Explicitly re-lunch to ensure GApps dependencies evaluate correctly
 axion larry userdebug full
 
 echo "=== Starting GApps Build ==="
@@ -114,6 +95,6 @@ cp out/target/product/larry/axion*.zip \
    out/target/product/larry/dtbo.img \
    out/target/product/larry/system/build.prop gapps/
 
-echo "=========================================="
-echo "=== BOTH VANILLA & GAPPS BUILDS DONE ! ==="
-echo "=========================================="
+echo "========================================="
+echo "========== GAPPS BUILDS DONE ! =========="
+echo "========================================="
