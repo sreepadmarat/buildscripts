@@ -33,7 +33,7 @@ rm -rf packages/apps/Updater
 # 4. Inject custom device trees
 echo "=== Cloning Custom Device Trees ==="
 git clone -b axion --depth=1 https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry
-git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common
+git clone -b axion --depth=1 https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common
 git clone -b axion --depth=1 https://github.com/sreepadmarat/hardware_oplus hardware/oplus
 git clone -b 16.2 --depth=1 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/dolby
 git clone -b 16.0 --depth=1 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar
