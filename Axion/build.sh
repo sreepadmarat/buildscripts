@@ -53,6 +53,29 @@ if [ -f hardware/interfaces/camera/device/3.3/default/Android.bp ]; then
     sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.3/default/Android.bp
 fi
 
+ # Automatically detect and exclude duplicate Oplus classes
+    echo "=== Automatically Excluding Duplicate OPlus Classes ==="
+    OPLUS_FWK_BP="hardware/oplus/oplus-fwk/Android.bp"
+    if [ -f "$OPLUS_FWK_BP" ]; then
+        # Find all java files in oplus-fwk
+        find hardware/oplus/oplus-fwk/src/com/oplus -name "*.java" | while read -r file; do
+            # Extract the package/class path relative to com/oplus/
+            rel_path=$(echo "$file" | sed 's|.*src/com/oplus/||')
+            
+            # Check if a file with the same package subpath exists in frameworks/base
+            # (We check if find actually outputs a non-empty string)
+            found_dup=$(find frameworks/base -type f -path "*/com/oplus/$rel_path")
+            if [ -n "$found_dup" ]; then
+                exclude_path="src/com/oplus/$rel_path"
+                echo "Excluding duplicate class: $exclude_path"
+                
+                # Inject it into exclude_srcs list inside Android.bp
+                sed -i "/exclude_srcs: \[/a \ \ \ \ \ \ \ \"$exclude_path\"," "$OPLUS_FWK_BP"
+            fi
+        done
+    fi
+
+
 # Safe file mutations
 rm -f packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
