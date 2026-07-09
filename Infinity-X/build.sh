@@ -39,6 +39,7 @@ git clone -b 16.0 --depth=1 https://github.com/Larry-ROM-Archive/packages_apps_G
 git clone -b 16.0-hybrid --depth=1 https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375
 git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/proprietary_vendor_oneplus_larry vendor/oneplus/larry
 git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/proprietary_vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common
+git clone -b lineage-23.2 --depth=1 https://github.com/sreepadmarat/vendor-oplus-camera vendor/oplus/camera
 git clone -b 16 --depth=1 https://github.com/sreepadmarat/packages_apps_Updater packages/apps/Updater
 echo "Custom Trees Cloned Successfully"
 
@@ -57,14 +58,6 @@ rm -f packages/apps/DolbyAtmos/Android.mk
 echo "" > packages/apps/DolbyAtmos/Android.bp
 sed -i '/"Calendar",/d' build/target/product/gsi/Android.bp
 
-# Download Git LFS Artifacts for all tracked repos safely
-echo "=== Fetching Git LFS Artifacts ==="
-repo forall -c 'git lfs pull || true'
-
-# 6. Set up build environment
-echo "=== Loading Environment Setup ==="
-. build/envsetup.sh
-
 # 7. Clean Signing Keys Setup
 echo "=== Setting Up Build Keys ==="
 mkdir -p vendor/infinity-priv
@@ -75,6 +68,14 @@ rm -rf vendor/infinity-priv/buildscripts_tmp
 if [ -f vendor/infinity-priv/keys/keys.mk ]; then
     sed -i 's|vendor/lineage-priv/keys/|vendor/infinity-priv/keys/|g' vendor/infinity-priv/keys/keys.mk
 fi
+
+# Download Git LFS Artifacts for all tracked repos safely
+echo "=== Fetching Git LFS Artifacts ==="
+repo forall -c 'git lfs pull || true'
+
+# 6. Set up build environment
+echo "=== Loading Environment Setup ==="
+. build/envsetup.sh
 
 # Global build configuration
 export TZ=Asia/Kolkata
