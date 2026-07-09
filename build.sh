@@ -74,5 +74,3 @@ cp out/target/product/larry/PixelOS_larry*.zip \
    out/target/product/larry/vendor_boot.img \
    out/target/product/larry/dtbo.img \
    out/target/product/larry/system/build.prop pixelos/
-m updatepackage
-cp out/target/product/larry/custom_larry-img.zip pixelos/
