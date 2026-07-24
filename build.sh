@@ -7,13 +7,11 @@ rm -rf hardware/oplus
 rm -rf kernel/oneplus/sm6375
 rm -rf vendor/oneplus/larry
 rm -rf vendor/oneplus/sm6375-common
-rm -rf hardware/dolby
-rm -rf packages/apps/GameBar
-rm -rf vendor/lineage-priv
-rm -rf pixelos
+rm -rf vendor/evolution-priv
+rm -rf evolution
 
 # 2. Rom source repo initialization
-repo init -u https://github.com/PixelOS-AOSP/android_manifest.git -b sixteen-qpr2 --git-lfs --depth=1
+repo init -u https://github.com/Evolution-X/manifest -b cnb --git-lfs --depth=1
 echo "=================="
 echo "Repo init success"
 echo "=================="
@@ -25,36 +23,30 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 echo "============ Base Repo Sync Successfull ==============="
 
 # 4. NOW inject your custom device trees (Safe from being pruned!)
-git clone -b pixel https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry --depth=1
-git clone -b pixel https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
-git clone -b pixel https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
-git clone -b 16.2 https://github.com/Larry-ROM-Archive/hardware_dolby hardware/dolby --depth=1
-git clone -b 16.0 https://github.com/Larry-ROM-Archive/packages_apps_GameBar packages/apps/GameBar --depth=1
-git clone -b 16.0 https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375 --depth=1
-git clone -b lineage-23.2 https://github.com/sreepadmarat/proprietary_vendor_oneplus_larry vendor/oneplus/larry --depth=1
-git clone -b lineage-23.2 https://github.com/sreepadmarat/proprietary_vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common --depth=1
+git clone -b evolution https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry --depth=1
+git clone -b evolution https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
+git clone -b evolution https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
+git clone -b 16.2-resukisu https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375 --depth=1
+git clone -b 17.0 https://github.com/Larry-ROM-Archive/vendor_oneplus_larry vendor/oneplus/larry --depth=1
+git clone -b 17.0 https://github.com/Larry-ROM-Archive/vendor_oneplus_sm6375-common vendor/oneplus/sm6375-common --depth=1
 echo "============ Custom Trees Cloned Successfully ==============="
-
-# Patches
-sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.2/default/Android.bp
-sed -i 's/"true": \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/true: \["-DTARGET_CAMERA_OVERRIDE_FORMAT_FROM_RESERVED"\]/g' hardware/interfaces/camera/device/3.3/default/Android.bp
-rm packages/apps/DolbyAtmos/Android.mk
-echo "" > packages/apps/DolbyAtmos/Android.bp
 
 # Download lfs Artifacts
 repo forall -c 'git lfs pull'
 
-# 5. Set up build environment (gettop handles patches cleanly now)
+# Clean Signing Keys & absolute path Symlinking
+mkdir -p vendor/evolution-priv
+git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/evolution-priv/buildscripts_tmp
+mv vendor/evolution-priv/buildscripts_tmp/keys vendor/evolution-priv/keys
+rm -rf vendor/evolution-priv/buildscripts_tmp
+ln -s evolution-priv vendor/lineage-priv
+
+# Set up build environment (gettop handles patches cleanly now)
 source build/envsetup.sh
 echo "====== Envsetup Done ======="
 
-# 6. Clean Signing Keys & absolute path Symlinking
-mkdir -p vendor/lineage-priv
-git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
-mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
-rm -rf vendor/lineage-priv/buildscripts_tmp
-
 # Export environmental variables
+export WITH_GMS=true
 export TZ=Asia/Kolkata
 export BUILD_USERNAME=sreepadmarat
 export BUILD_HOSTNAME=barbatos
@@ -62,15 +54,14 @@ export RELAX_USES_LIBRARY_CHECK=true
 echo "======= Export Done ======"
 
 # Lunch 
-lunch custom_larry-bp4a-userdebug 
+lunch lineage_larry-cp2a-userdebug
 echo "====== Lunch Set ======="
 
 m installclean
-m pixelos
+m evolution
 echo "=== Copying Build Output ==="
-mkdir -p pixelos
-cp out/target/product/larry/PixelOS_larry*.zip \
+mkdir -p evolution
+cp out/target/product/larry/EvolutionX*.zip \
    out/target/product/larry/boot.img \
    out/target/product/larry/vendor_boot.img \
-   out/target/product/larry/dtbo.img \
-   out/target/product/larry/system/build.prop pixelos/
+   out/target/product/larry/dtbo.img evolution/
