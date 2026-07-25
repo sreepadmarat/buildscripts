@@ -24,7 +24,7 @@ echo "============ Base Repo Sync Successfull ==============="
 
 # 4. NOW inject your custom device trees (Safe from being pruned!)
 git clone -b evolution https://github.com/sreepadmarat/device_oneplus_larry device/oneplus/larry --depth=1
-git clone -b evolution https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
+git clone -b 17.0 https://github.com/sreepadmarat/device_oneplus_sm6375-common device/oneplus/sm6375-common --depth=1
 git clone -b evolution https://github.com/sreepadmarat/hardware_oplus hardware/oplus --depth=1
 git clone -b 16.2-resukisu https://github.com/sreepadmarat/android_kernel_oneplus_sm6375 kernel/oneplus/sm6375 --depth=1
 git clone -b 17.0 https://github.com/Larry-ROM-Archive/vendor_oneplus_larry vendor/oneplus/larry --depth=1
