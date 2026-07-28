@@ -11,6 +11,7 @@ rm -rf vendor/lineage-priv
 rm -rf .repo/local_manifests/custom.xml
 rm -rf vendor/oplus/camera
 rm -rf packages/apps/TouchServices
+rm -rf packages/apps/GameBar
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
@@ -43,6 +44,7 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
   <project path="vendor/oneplus/larry" name="TheMuppets/vendor_oneplus_larry" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="vendor/oneplus/sm6375-common" name="TheMuppets/vendor_oneplus_sm6375-common" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="packages/apps/TouchServices" name="sreepadmarat/packages_apps_TouchServices" remote="github" revision="lineage-23.2" clone-depth="1" />
+  <project path="packages/apps/GameBar" name="sreepadmarat/packages_apps_GameBar" remote="github" revision="lineage-23.2" clone-depth="1" />
 </manifest>
 EOF
 
