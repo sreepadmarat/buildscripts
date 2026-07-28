@@ -8,6 +8,7 @@ rm -rf kernel/oneplus/sm6375
 rm -rf vendor/oneplus/larry
 rm -rf vendor/oneplus/sm6375-common
 rm -rf vendor/lineage-priv
+rm -rf .repo/local_manifests/custom.xml
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
