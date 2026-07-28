@@ -41,6 +41,7 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
   <project path="kernel/oneplus/sm6375" name="sreepadmarat/android_kernel_oneplus_sm6375" remote="github" revision="16.2-resukisu" clone-depth="1" />
   <project path="vendor/oneplus/larry" name="TheMuppets/vendor_oneplus_larry" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="vendor/oneplus/sm6375-common" name="TheMuppets/vendor_oneplus_sm6375-common" remote="github" revision="lineage-23.2" clone-depth="1" />
+  <project path="packages/apps/TouchServices" name="sreepadmarat/packages_apps_TouchServices" remote="github" revision="lineage-23.2" clone-depth="1" />
 </manifest>
 EOF
 
