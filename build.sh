@@ -13,6 +13,7 @@ rm -rf vendor/oplus/camera
 rm -rf packages/apps/TouchServices
 rm -rf packages/apps/GameBar
 rm -rf vendor/revanced
+rm -rf packages/apps/KProfiles
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
@@ -47,6 +48,7 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
   <project path="packages/apps/TouchServices" name="sreepadmarat/packages_apps_TouchServices" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="packages/apps/GameBar" name="sreepadmarat/packages_apps_GameBar" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="vendor/revanced" name="sreepadmarat/vendor_revanced" remote="github" revision="sixteen-qpr2" clone-depth="1" />
+  <project path="packages/apps/KProfiles" name="KProfiles/android_packages_apps_Kprofiles" remote="github" revision="main" clone-depth="1" />
 </manifest>
 EOF
 
