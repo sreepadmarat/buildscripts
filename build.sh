@@ -12,6 +12,7 @@ rm -rf .repo/local_manifests/custom.xml
 rm -rf vendor/oplus/camera
 rm -rf packages/apps/TouchServices
 rm -rf packages/apps/GameBar
+rm -rf vendor/revanced
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
@@ -45,6 +46,7 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
   <project path="vendor/oneplus/sm6375-common" name="TheMuppets/vendor_oneplus_sm6375-common" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="packages/apps/TouchServices" name="sreepadmarat/packages_apps_TouchServices" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="packages/apps/GameBar" name="sreepadmarat/packages_apps_GameBar" remote="github" revision="lineage-23.2" clone-depth="1" />
+  <project path="vendor/revanced" name="sreepadmarat/vendor_revanced" remote="github" revision="sixteen-qpr2" clone-depth="1" />
 </manifest>
 EOF
 
@@ -64,6 +66,16 @@ mkdir -p vendor/lineage-priv
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
+
+# --- ReVanced Cherry-Picks ---
+    echo "Applying ReVanced framework patches..."
+    cd frameworks/base
+    git fetch https://github.com/PixelLineage/frameworks_base.git bc71449a25b6b0d16d2b4e611cdc9939bd89bb54 && git cherry-pick FETCH_HEAD
+    cd ../..
+  
+    cd packages/apps/Settings
+    git fetch https://github.com/PixelLineage/packages_apps_Settings.git 38def62c73e175bf65708137c3e9e281c476ba84 && git cherry-pick FETCH_HEAD
+    cd ../../..
 
 # Set up build environment (gettop handles patches cleanly now)
 source build/envsetup.sh
