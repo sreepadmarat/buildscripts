@@ -30,7 +30,6 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote name="gitlab" fetch="https://gitlab.com/" />
-  <remote name="github" fetch="https://github.com/" />
 
   <project path="vendor/pixel/gms" name="thecloverproject/vendor_pixel_gms" remote="gitlab" revision="16-qpr2" clone-depth="1" />
   <project path="vendor/pixel/launcher" name="thecloverproject/vendor_pixel_launcher" remote="gitlab" revision="16-qpr2" clone-depth="1" />
