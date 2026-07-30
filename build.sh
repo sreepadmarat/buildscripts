@@ -14,7 +14,8 @@
     rm -rf packages/apps/GameBar                                                                                                                                                                  
     rm -rf vendor/revanced                                                                                                                                                                        
     rm -rf packages/apps/KProfiles                                                                                                                                                                
-    rm -rf vendor/lunaris/dolby                                                                                                                                                                   
+    rm -rf vendor/lunaris/dolby   
+    rm -rf vendor/pixel-style
                                                                                                                                                                                                   
     # Clean old repo project cache objects to prevent hook mismatch errors                                                                                                                        
     rm -rf .repo/projects/vendor/oneplus/                                                                                                                                                         
@@ -42,8 +43,7 @@
       <project path="vendor/pixel/gms" name="thecloverproject/vendor_pixel_gms" remote="gitlab" revision="16-qpr2" clone-depth="1" />                                                             
       <project path="vendor/pixel/launcher" name="thecloverproject/vendor_pixel_launcher" remote="gitlab" revision="16-qpr2" clone-depth="1" />                                                   
       <project path="vendor/pixel/themepicker" name="thecloverproject/vendor_pixel_themepicker" remote="gitlab" revision="16-qpr2" clone-depth="1" />                                             
-      <project path="vendor/pixel/sounds" name="thecloverproject/vendor_pixel_sounds" remote="gitlab" revision="16-qpr2" clone-depth="1" />                                                       
-      <project path="vendor/pixel-style" name="Evolution-X/vendor_pixel-style" remote="github" revision="bka" clone-depth="1" />                                                                  
+      <project path="vendor/pixel/sounds" name="thecloverproject/vendor_pixel_sounds" remote="gitlab" revision="16-qpr2" clone-depth="1" />                                                                                                                         
       <project path="vendor/gms_spoof" name="Neoteric-OS/android_vendor_gms_spoof" remote="github" revision="master" clone-depth="1" />                                                           
                                                                                                                                                                                                   
       <project path="vendor/oplus/camera" name="sreepadmarat/vendor-oplus-camera" remote="github" revision="lineage-23.2" clone-depth="1" />                                                      
