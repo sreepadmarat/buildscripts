@@ -15,11 +15,7 @@
     rm -rf vendor/revanced                                                                                                                                                                        
     rm -rf packages/apps/KProfiles                                                                                                                                                                
     rm -rf vendor/lunaris/dolby   
-    rm -rf vendor/pixel-style
-                                                                                                                                                                                                  
-    # Clean old repo project cache objects to prevent hook mismatch errors                                                                                                                        
-    rm -rf .repo/projects/vendor/oneplus/                                                                                                                                                         
-    rm -rf .repo/project-objects/TheMuppets/                                                                                                                                                      
+    rm -rf vendor/pixel-style                                                                                                                                                    
                                                                                                                                                                                                   
     # Abort any prior leftover rebase state in Settings or frameworks/base                                                                                                                        
     (cd frameworks/base 2>/dev/null && git cherry-pick --abort 2>/dev/null || true)                                                                                                               
