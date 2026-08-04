@@ -34,19 +34,18 @@
     # 6. Set up Signing Keys
     mkdir -p vendor/custom-priv/keys
     git clone --depth=1 https://github.com/sreepadmarat/buildscripts.git vendor/custom-priv/keys/buildscripts_tmp
-    mv vendor/custom-priv/keys/buildscripts_tmp/keys vendor/custom-priv/keys
+    mv vendor/custom-priv/keys/buildscripts_tmp/keys/* vendor/custom-priv/keys/
     rm -rf vendor/custom-priv/keys/buildscripts_tmp
     sed -i 's|vendor/lineage-priv/keys/releasekey|vendor/custom-priv/keys/releasekey|g' vendor/custom-priv/keys/keys.mk
-
   
-    # 7. Export build environment
+    # 7. Setup environment & start build
+    . build/envsetup.sh
+  
+    # Re-export username/hostname AFTER envsetup.sh (since envsetup.sh overrides them)
     export TZ=Asia/Kolkata
     export BUILD_USERNAME=sreepadmarat
     export BUILD_HOSTNAME=barbatos
-    echo "======= Export Done ======"
-  
-    # 8. Setup environment & start build
-    . build/envsetup.sh
+    echo "======= Environment Setup Complete ======"
+
     lunch larry-cp2a-userdebug
-  
     mka bacon
