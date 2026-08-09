@@ -5,17 +5,17 @@
     rm -rf device/oneplus/sm6375-common                                                                                                                                                           
     rm -rf hardware/oplus                                                                                                                                                                         
     rm -rf kernel/oneplus/sm6375                                                                                                                                                                  
-    rm -rf vendor/oneplus/larry
-    rm -rf vendor/oneplus/sm6375-common
-    rm -rf vendor/custom-priv/keys
-  
-    # 2. Initialize Custom ROM / ASCP Manifest
-    repo init -u https://github.com/Pixelify-AOSP/platform_manifest -b 17 --git-lfs --depth=1
-    echo "=================="
-    echo "Repo init success"
-    echo "=================="
-  
-    # 3. Sync the base platform repositories FIRST
+    rm -rf vendor/oneplus/larry                                                                                                                                                                   
+    rm -rf vendor/oneplus/sm6375-common                                                                                                                                                           
+    rm -rf vendor/custom-priv/keys                                                                                                                                                                
+                                                                                                                                                                                                  
+    # 2. Initialize Custom ROM / ASCP Manifest                                                                                                                                                    
+    repo init -u https://github.com/Pixelify-AOSP/platform_manifest -b 17 --git-lfs --depth=1                                                                                                     
+    echo "=================="                                                                                                                                                                     
+    echo "Repo init success"                                                                                                                                                                      
+    echo "=================="                                                                                                                                                                     
+                                                                                                                                                                                                  
+    # 3. Sync the base platform repositories FIRST                                                                                                                                                
     /opt/crave/resync.sh
     repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
     echo "============ Base Repo Sync Successful ==============="
@@ -49,4 +49,14 @@
     echo "======= Environment Setup Complete ======"
   
     lunch larry-cp2a-userdebug
+    m installclean
+  
+    # Soong Memory Limit Workaround
+    (sleep 3000; kill -9 $$) &
+    TIMEOUTPID=$!
+    export GOMEMLIMIT=52GiB GOGC=20 GODEBUG="gctrace=1" GOMAXPROCS=12
+    m nothing || m nothing || m nothing || m nothing || exit 1
+    kill -9 $TIMEOUTPID
+    unset GOMEMLIMIT GOGC GODEBUG GOMAXPROCS
+  
     mka updatepackage
