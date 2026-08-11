@@ -15,6 +15,7 @@ rm -rf packages/apps/GameBar
 rm -rf vendor/revanced
 rm -rf packages/apps/KProfiles
 rm -rf vendor/lunaris/dolby
+rm -rf vendor/pixel-style
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
@@ -30,6 +31,9 @@ cat << 'EOF' > .repo/local_manifests/custom.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote name="gitlab" fetch="https://gitlab.com/" />
+
+  <remove-project name="LineageOS/android_frameworks_base" />
+  <remove-project name="LineageOS/android_packages_apps_Settings" />
 
   <project path="frameworks/base" name="sreepadmarat/android_frameworks_base" remote="github" revision="lineage-23.2" clone-depth="1" />
   <project path="packages/apps/Settings" name="sreepadmarat/android_packages_apps_Settings" remote="github" revision="lineage-23.2" clone-depth="1" />
@@ -81,6 +85,7 @@ export TZ=Asia/Kolkata
 export BUILD_USERNAME=sreepadmarat
 export BUILD_HOSTNAME=barbatos
 export RELAX_USES_LIBRARY_CHECK=true
+export ROOMSERVICE_OBEY_OUT_OF_TREE=true
 echo "======= Export Done ======"
 
 # Lunch 
