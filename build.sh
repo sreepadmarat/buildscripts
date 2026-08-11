@@ -15,7 +15,6 @@ rm -rf packages/apps/GameBar
 rm -rf vendor/revanced
 rm -rf packages/apps/KProfiles
 rm -rf vendor/lunaris/dolby
-rm -rf vendor/pixel-style
 
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
