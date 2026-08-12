@@ -15,7 +15,7 @@ rm -rf packages/apps/GameBar
 rm -rf vendor/revanced
 rm -rf packages/apps/KProfiles
 rm -rf vendor/lunaris/dolby
-
+rm -rf vendor/custom-priv
 # 2. Rom source repo initialization
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
 echo "=================="
@@ -74,6 +74,8 @@ mkdir -p vendor/lineage-priv
 git clone --depth 1 https://github.com/sreepadmarat/buildscripts.git vendor/lineage-priv/buildscripts_tmp
 mv vendor/lineage-priv/buildscripts_tmp/keys vendor/lineage-priv/keys
 rm -rf vendor/lineage-priv/buildscripts_tmp
+mkdir -p vendor/custom-priv
+ln -sfn ../lineage-priv/keys vendor/custom-priv/keys
 
 # Set up build environment
 source build/envsetup.sh
