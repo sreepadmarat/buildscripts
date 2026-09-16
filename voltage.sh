@@ -36,8 +36,7 @@
     git clone --depth=1 https://github.com/sreepadmarat/buildscripts.git vendor/voltage-priv/keys/buildscripts_tmp
     mv vendor/voltage-priv/keys/buildscripts_tmp/keys/* vendor/voltage-priv/keys/
     rm -rf vendor/voltage-priv/keys/buildscripts_tmp
-    sed -i 's|vendor/lineage-priv/keys/releasekey|vendor/voltage-priv/keys/releasekey|g' vendor/voltage-priv/keys/keys.mk
-  
+    
     # 7. Setup environment & start build
     export ROOMSERVICE_BRANCHES=false
     . build/envsetup.sh
