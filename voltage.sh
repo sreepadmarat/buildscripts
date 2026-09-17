@@ -26,8 +26,8 @@
     git clone --depth=1 -b voltage https://github.com/sreepadmarat/android_device_oneplus_sm6375-common.git device/oneplus/sm6375-common
     git clone --depth=1 -b voltage https://github.com/sreepadmarat/android_hardware_oplus.git hardware/oplus
     git clone --depth=1 -b voltage https://github.com/sreepadmarat/android_kernel_oneplus_sm6375.git kernel/oneplus/sm6375
-    git clone --depth=1 -b voltage https://github.com/sreepadmarat/proprietary_vendor_oneplus_larry.git vendor/oneplus/larry
-    git clone --depth=1 -b voltage https://github.com/sreepadmarat/proprietary_vendor_oneplus_sm6375-common.git vendor/oneplus/sm6375-common
+    git clone --depth=1 -b lineage-24.0 https://github.com/TheMuppets/proprietary_vendor_oneplus_larry.git vendor/oneplus/larry
+    git clone --depth=1 -b lineage-24.0 https://github.com/TheMuppets/proprietary_vendor_oneplus_sm6375-common.git vendor/oneplus/sm6375-common
     git clone --depth=1 -b 17 https://github.com/sreepadmarat/build_soong.git build/soong
   
     # 5. Download Git LFS Artifacts
